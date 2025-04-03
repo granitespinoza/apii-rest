@@ -7,7 +7,6 @@ const port = 8001;
 
 app.use(bodyParser.json());
 
-// Inicializando la base de datos
 initDB();
 
 app.get('/users', (req, res) => {
@@ -19,8 +18,6 @@ app.get('/users', (req, res) => {
     res.json({ users: rows });
   });
 });
-
-// Resto de las rutas...
 
 app.get('/users/:id', (req, res) => {
   const { id } = req.params;
