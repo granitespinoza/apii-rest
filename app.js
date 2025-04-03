@@ -1,12 +1,14 @@
+// editt 2 
 const express = require('express');
 const bodyParser = require('body-parser');
-const { db, initDB } = require('./db');
+const { db, initDB } = require('./db');  // Asegúrate de que 'db.js' esté bien configurado
 
 const app = express();
 const port = 8001;
 
 app.use(bodyParser.json());
 
+// Inicializa la base de datos
 initDB();
 
 app.get('/users', (req, res) => {
@@ -68,7 +70,6 @@ app.patch('/users/:id', (req, res) => {
   const { id } = req.params;
   const { name, email } = req.body;
 
- 
   let updates = [];
   let params = [];
 
@@ -87,7 +88,7 @@ app.patch('/users/:id', (req, res) => {
     return;
   }
 
-  params.push(id); 
+  params.push(id);
 
   const sql = `UPDATE users SET ${updates.join(', ')} WHERE id = ?`;
 
@@ -100,7 +101,7 @@ app.patch('/users/:id', (req, res) => {
   });
 });
 
-
+// Inicia el servidor
 app.listen(port, '0.0.0.0', () => {
   console.log(`API REST en http://0.0.0.0:${port}`);
-}); 
+});
