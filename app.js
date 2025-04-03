@@ -1,13 +1,13 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-const { db, initDB } = require('./db');
+const { db, initDB } = require('./db');  // Ahora importa correctamente db e initDB
 
 const app = express();
 const port = 8001;
 
 app.use(bodyParser.json());
 
-initDB();
+initDB()
 
 app.get('/users', (req, res) => {
   db.all('SELECT * FROM users', [], (err, rows) => {
