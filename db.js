@@ -1,5 +1,5 @@
 const sqlite3 = require('sqlite3').verbose();
-const db = new sqlite3.Database('./db/database.db');  // Aquí debes crear tu base de datos
+const db = new sqlite3.Database('./db.sqlite3');  // Usando una base de datos en el mismo directorio
 
 const initDB = () => {
   db.serialize(() => {
@@ -28,4 +28,4 @@ const initDB = () => {
   });
 };
 
-module.exports = { db, initDB };  // Asegúrate de exportar tanto db como initDB
+module.exports = { db, initDB };
